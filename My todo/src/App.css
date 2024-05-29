@@ -1,0 +1,170 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Architects Daughter", cursive;
+  font-weight: bolder;
+  font-style: normal;
+  margin: 10px 40px 20px 30px;
+}
+
+.heading {
+  display: flex;
+  font-size: 40px;
+  font-weight: bolder;
+  margin: 0 auto;
+  text-align: center;
+  color: black;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.group {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.border {
+  background-color: #fff;
+  text-align: center;
+  justify-content: center;
+  width: 700px;
+  height: 565px;
+  border-radius: 5px;
+  padding: 4%;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.to {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 40px;
+}
+
+#button {
+  border-color: #fff;
+  width: 140px;
+  height: 40px;
+  color: #fff;
+  border-radius: 10px;
+  background-color: #4000ff;
+  font-size: 20px;
+  margin-left: 20px;
+  margin-bottom: 100px;
+  text-align: center;
+}
+
+.title {
+  font-size: 20px;
+  width: 400px;
+  height: 30px;
+  padding: 1%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #fff;
+  margin-right: 180px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px auto;
+  width: 60%;
+  color: black;
+  border: 10px #555;
+}
+
+ul li {
+  font-size: 30px;
+  padding: 12px 8px;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul li.checked {
+  color: #555;
+  text-decoration: line-through;
+}
+
+ul li button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+ul li button {
+  color: red;
+}
+
+.outer {
+  background-color: #6495ed;
+  width: 1000px;
+  height: 665px;
+  border-radius: 5px;
+  padding: 4%;
+  align-items: center;
+  margin: 0 auto;
+  margin-left: 200px;
+  margin-top: 20px;
+  position: relative;
+}
+
+.input-container {
+  position: relative;
+  display: inline-block;
+}
+
+.input-container .fa-magnifying-glass {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #666666;
+}
+
+.input-container input {
+  padding-left: 35px;
+}
+
+.mode {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border:10px black;
+  font-size: 30px;
+  cursor: pointer;
+  color: #e82323;
+  background-color: #000;
+}
+
+.light .border {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
+.dark .border {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+}
+
+.dark .heading {
+  color: white;
+}
+
+.light .heading {
+  color: black;
+}
