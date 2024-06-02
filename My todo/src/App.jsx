@@ -1,26 +1,25 @@
 import { useState, useEffect } from 'react';
-import '@fortawesome/fontawesome-free/css/all.min.css';
 import './App.css';
 
+function getLocalItems() {
+  let list = localStorage.getItem("Lists");
+  if (list) {
+    return JSON.parse(localStorage.getItem("Lists"));
+  } else {
+    return [];
+  }
+}
+
 function App() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(getLocalItems());
   const [inputValue, setInputValue] = useState("");
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    const storedTasks = localStorage.getItem("tasks");
-    if (storedTasks) {
-      setTasks(JSON.parse(storedTasks));
-    }
-
+  const [isDarkMode, setIsDarkMode] = useState(() => {
     const storedMode = localStorage.getItem("isDarkMode");
-    if (storedMode) {
-      setIsDarkMode(JSON.parse(storedMode));
-    }
-  }, []);
+    return storedMode ? JSON.parse(storedMode) : false;
+  });
 
   useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    localStorage.setItem("Lists", JSON.stringify(tasks));
   }, [tasks]);
 
   useEffect(() => {
@@ -66,8 +65,8 @@ function App() {
     <div className={`outer ${isDarkMode ? 'dark' : 'light'}`}>
       <div className="border">
         <center>
-          <h5 className="heading">To-Do List</h5>
-          <div className="to">Today I have to do</div>
+          {/* <img className="plus" src="plus.png" alt="" /> */}
+          <h5 className="heading">TODO LIST</h5>
           <div className="group">
             <div className="input-container">
               <i className="fas fa-magnifying-glass"></i>
@@ -78,22 +77,28 @@ function App() {
                 onChange={(e) => setInputValue(e.target.value)}
                 className="title"
               />
+              <img className="plus" src="plus.png" alt="" />
             </div>
-            <button onClick={addTask} id="button">Submit</button>
+            <button onClick={addTask} id="button">ALL &emsp;&emsp;&ensp;|<img className="arrow" src="arrow.png" alt="" /></button>
+            <button
+              onClick={toggleDarkMode}
+              className={`mode ${isDarkMode ? 'dark' : 'light'}`}
+            />
           </div>
-          <button onClick={toggleDarkMode} className="mode">
-            <i className={`fas ${isDarkMode ? 'fa-sun' : 'fa-moon'}`}></i>
-          </button>
           <ul id="list-container">
             {tasks.map((task, index) => (
-              <li
-                key={index}
-                className={task.checked ? "checked" : ""}
-                onClick={() => toggleTask(index)}
-              >
+              <li key={index} className={task.checked ? "checked" : ""}>
+                <input
+                  type="checkbox"
+                  checked={task.checked}
+                  onChange={() => toggleTask(index)}
+                  className="task-checkbox"
+                />
                 {task.text}
-                <button onClick={(e) => { e.stopPropagation(); editTask(index); }}>✎</button>
-                <button onClick={(e) => { e.stopPropagation(); deleteTask(index); }}>✖</button>
+                <div className="buttons">
+                  <button onClick={(e) => { e.stopPropagation(); editTask(index); }} className="edit-btn">✎</button>
+                  <button onClick={(e) => { e.stopPropagation(); deleteTask(index); }} className="delete-btn">✖</button>
+                </div>
               </li>
             ))}
           </ul>

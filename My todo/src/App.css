@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -8,16 +9,17 @@ body {
   font-weight: bolder;
   font-style: normal;
   margin: 10px 40px 20px 30px;
+  justify-content: center;
 }
 
 .heading {
   display: flex;
-  font-size: 40px;
-  font-weight: bolder;
+  font-size: 30px;
   margin: 0 auto;
   text-align: center;
   color: black;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
+  justify-content: center;
 }
 
 .group {
@@ -32,42 +34,52 @@ body {
   justify-content: center;
   width: 700px;
   height: 565px;
-  border-radius: 5px;
   padding: 4%;
   align-items: center;
   margin: 0 auto;
-}
-
-.to {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #button {
-  border-color: #fff;
-  width: 140px;
-  height: 40px;
-  color: #fff;
-  border-radius: 10px;
-  background-color: #4000ff;
+  border: none;
+  padding: 10px;
+  margin: 0 10px;
+  cursor: pointer;
   font-size: 20px;
-  margin-left: 20px;
-  margin-bottom: 100px;
-  text-align: center;
+  border-radius: 4px;
+  color: #fff;
+  height: 43px;
+  margin-top: 21px;
+  width: 250px;
+  text-align: left;
+  margin-bottom: 10px; 
+  background-color: #8317d1;
+}
+
+.mode {
+  background-color:#8317d1;
+  color: #fff;
+  background-image: url('arrow.png');
+  background-position: 10px left;
 }
 
 .title {
   font-size: 20px;
   width: 400px;
-  height: 30px;
-  padding: 1%;
+  padding: 10px;
   margin-top: 20px;
-  margin-bottom: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
-  color: #fff;
-  margin-right: 180px;
+  color: #130a0a;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding-left: 35px; 
+  background-image: url('search.png'); 
+  background-repeat: no-repeat; 
+  background-position: 10px right; 
+  background-size: 35px 35px;
+  
+
 }
 
 ul {
@@ -76,11 +88,10 @@ ul {
   margin: 20px auto;
   width: 60%;
   color: black;
-  border: 10px #555;
 }
 
 ul li {
-  font-size: 30px;
+  font-size: 20px;
   padding: 12px 8px;
   user-select: none;
   cursor: pointer;
@@ -89,11 +100,20 @@ ul li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #f4f4f4;
+  border-radius: 4px;
+  transition: background-color 0.3s;
 }
 
 ul li.checked {
   color: #555;
   text-decoration: line-through;
+  background-color: #d3d3d3;
+}
+
+ul li .buttons {
+  display: flex;
+  gap: 5px;
 }
 
 ul li button {
@@ -104,8 +124,22 @@ ul li button {
   margin-left: 10px;
 }
 
-ul li button {
+ul li .edit-btn {
+  color: #2980b9;
+}
+
+ul li .delete-btn {
   color: red;
+}
+
+ul li .delete-btn:hover {
+  transition: ease-in-out 0.3s;
+  transform: scale(1.2);
+}
+
+ul li .edit-btn:hover {
+  transition: ease-in-out 0.3s;
+  transform: scale(1.2);
 }
 
 .outer {
@@ -116,7 +150,6 @@ ul li button {
   padding: 4%;
   align-items: center;
   margin: 0 auto;
-  margin-left: 200px;
   margin-top: 20px;
   position: relative;
 }
@@ -139,18 +172,6 @@ ul li button {
   padding-left: 35px;
 }
 
-.mode {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border:10px black;
-  font-size: 30px;
-  cursor: pointer;
-  color: #e82323;
-  background-color: #000;
-}
-
 .light .border {
   background-color: rgba(255, 255, 255, 0.8);
   color: #000;
@@ -167,4 +188,85 @@ ul li button {
 
 .light .heading {
   color: black;
+}
+
+.task-checkbox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 3px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  margin-right: 10px;
+  vertical-align: middle;
+  background-color: white;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.task-checkbox:checked {
+  background-color: #8317d1;
+  border-color: #8317d1;
+}
+
+.task-checkbox:checked::after {
+  content: '✔';
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+}
+
+.mode {
+  border: none;
+  padding: 10px;
+  margin: 0 10px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #8317d1;
+  height: 43px;
+  margin-top: 21px;
+  background-image: url('sun.png');
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 60px;
+}
+
+.mode.light {
+  background-image: url('sun.png');
+}
+
+.mode.dark {
+  background-image: url('moon.png');
+}
+.plus{
+  width:40px;
+  height:40px;
+  background-color:#8317d1;
+  margin-top: 330px;
+  border-radius: 50%;
+  position:absolute;
+  top:70px;
+  left:590px;
+  bottom:0;
+  right:0;
+
+  /* margin-left: 450px; */
+  
+}
+.arrow{
+  width:25px;
+  height:25px;
+  position: absolute;
+  z-index: 20%;
+  /* color: #ddd; */
+  /* top:2px; */
+  justify-content: center;
+  
 }
